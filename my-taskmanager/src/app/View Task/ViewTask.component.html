@@ -1,0 +1,69 @@
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <form class="form-inline">
+                <div class="form-group">
+
+                    <label for="task" class="col-form-label">Task</label>
+                    <input type="text" class="form-control" id="task">
+
+                    <label for="parent" class="col-form-label">Parent Task</label>
+                    <input type="text" class="form-control" id="parent">
+                </div>
+
+                <div class="form-group">
+                    <label for="priorityfrom" class="col-form-label">Priority From</label>
+                    <input type="text" class="form-control" id="priorityfrom">
+
+                    <label for="priorityto" class="col-form-label">Priority To</label>
+                    <input type="text" class="form-control" id="priorityto">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="startdate" class="col-form-label">Start Date</label>
+                    <input type="date" class="form-control" id="startdate">
+
+                    <label for="enddate" class="col-form-label">End Date</label>
+                    <input type="date" class="form-control" id="enddate">
+                </div>
+            </form>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="tabular-content alt-content">
+
+                <table class="table table-striped alt-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Task</th>
+                            <th scope="col">Parent</th>
+                            <th scope="col">Priority</th>
+                            <th scope="col">Start</th>
+                            <th scope="col">End</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">End Task</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="col">Task</td>
+                            <td scope="col">Parent</td>
+                            <td scope="col">Priority</td>
+                            <td scope="col">Start</td>
+                            <td scope="col">End</td>
+                            <td scope="col">
+                                <a class="btn btn-primary" id="edit" routerLink="/UpdateTask">Edit</a> 
+                            </td>
+                            <td scope="col">
+                                <a class="btn btn-primary" id="delete">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
