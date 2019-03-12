@@ -4,29 +4,29 @@
 
             <div class="form-group">
                 <label for="task">Task</label>
-                <input type="text" class="form-control" id="task" required>
+                <input type="text" class="form-control" formControlName="task_name" required>
             </div>
             <div class="form-group">
                 <label for="priority">Priority</label>
                 <div class="slidecontainer">
-                    <input type="range" min="0" max="100" value="30" class="slider" id="priority">
+                    <input type="range" min="0" max="100" value="30" class="slider" formControlName="priority">
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="parenttask">Parent Task</label>
-                <input type="text" class="form-control" id="parenttask" required>
+                <input type="text" class="form-control" id="parenttask" formControlName="parent_task_name" required>
             </div>
             <div class="form-group">
                 <label for="startdate">Start Date </label>
-                <input type="date" class="form-control" id="startdate" required>
+                <input type="date" class="form-control" id="startdate" formControlName="start_date"  required>
             </div>
             <div class="form-group">
                 <label for="enddate">End Date</label>
-                <input type="date" class="form-control" id="enddate" required>
+                <input type="date" class="form-control" id="enddate" formControlName="end_date" required>
             </div>
             
-            <input class="btn btn-primary" type="submit" value="Add Task"> &nbsp;
+            <input class="btn btn-primary" type="submit" value="Add Task" (click)="addtask(task_name.value,task_id.value,parent_task_id.value,start_date.value,end_date.value, priority.value)"> &nbsp;
             <input class="btn btn-primary" type="reset" value="Reset">
         </form>
 

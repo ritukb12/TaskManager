@@ -7,7 +7,8 @@ import {UpdateTask} from './Update Task/UpdateTask.component'
 const routes: Routes = [
   {path:"AddTask", component:AddTask},
 {path:"ViewTask", component:ViewTask},
-{path:"UpdateTask", component:UpdateTask}];
+{path:"UpdateTask/:id", component:UpdateTask},
+{ path: '', redirectTo: '/', pathMatch: 'full'}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
