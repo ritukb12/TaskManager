@@ -1,11 +1,11 @@
 <div class="content">
     <div class="container">
         <div class="row">
-            <form class="form-inline">
+            <form [formGroup]="angForm">
                 <div class="form-group">
 
                     <label for="task" class="col-form-label">Task: </label>
-                    <input type="text" class="form-control" id="task">
+                    <input type="text" class="form-control" id="task" >
 
                     <label for="parent" class="col-form-label">Parent Task: </label>
                     <input type="text" class="form-control" id="parent">
@@ -46,12 +46,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td scope="col">Task</td>
-                            <td scope="col">Parent</td>
-                            <td scope="col">Priority</td>
-                            <td scope="col">Start</td>
-                            <td scope="col">End</td>
+                        <tr *ngFor = "let task of tasks">
+                            <td scope="col">{{task.task_name}}</td>
+                            <td scope="col">{{task.parent_task_name}}</td>
+                            <td scope="col">{{task.task_priority}}</td>
+                            <td scope="col">{{task.start_date}}</td>
+                            <td scope="col">{{task.end_date}}</td>
                             <td scope="col">
                                 <a class="btn btn-primary" id="edit" routerLink="/UpdateTask">Edit</a> 
                             </td>

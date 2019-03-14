@@ -1,16 +1,30 @@
 import { Component } from '@angular/core';
 import {TaskService } from '../task.service';
+import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
+
 @Component({
   selector: 'add-task',
   templateUrl: './AddTask.component.html',
   styleUrls: ['./AddTask.component.css']
 })
 export class AddTask {
+  angForm: FormGroup;
   title = 'Add Task';
-constructor(private bs: TaskService){}
+constructor(private ts: TaskService,private fb: FormBuilder){this.createForm();}
+createForm() {
+  this.angForm = this.fb.group({
+    task_name: ['', Validators.required ],
+    priority: ['', Validators.required ],
+    parent_task_name: ['', Validators.required ],
+    start_date: ['', Validators.required ],
+    end_date: ['', Validators.required ]
+    
 
-  addtask(task_name,task_id,parent_task_id,parent_task_name,start_date,end_date, priority) {
-    this.bs.addtask(task_name,task_id,parent_task_id,parent_task_name,start_date,end_date, priority);
+  });
+}
+  addtask(task_name,parent_task_name,start_date,end_date, priority) {
+    console.log("Reached component.ts addtask");
+    this.ts.addtask(task_name,parent_task_name,start_date,end_date, priority);
   }
   ngOnInit() {
   }

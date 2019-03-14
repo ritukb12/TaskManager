@@ -7,7 +7,7 @@ import {AddTask} from  './Add Task/AddTask.component'
 import {ViewTask} from  './View Task/ViewTask.component'
 import {UpdateTask} from  './Update Task/UpdateTask.component'
 import { HttpClientModule } from '@angular/common/http';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { TaskService } from './task.service';
 
 @NgModule({
@@ -21,7 +21,8 @@ import { TaskService } from './task.service';
     BrowserModule,
     AppRoutingModule,
     SlimLoadingBarModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [TaskService],
   bootstrap: [AppComponent]
