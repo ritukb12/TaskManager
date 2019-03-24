@@ -5,9 +5,8 @@ const Schema = mongoose.Schema;
 let Task = new Schema({
 
     task_name: {type :String } ,
-    //task_id: {type :Number },
-    parent_task_name:{type :String },
-    //parent_task_id: {type :Number },
+    //task_id: {type :Number },    
+    parent_task_name: {type :String },
     start_date: {type :String },
     end_date: {type :String },
     priority: {type :String }

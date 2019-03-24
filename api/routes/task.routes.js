@@ -6,10 +6,11 @@ const taskRoutes = express.Router();
 
 // Require Business model in our routes module
 let Task = require('../models/task');
+//let ParentTask = require('../models/parenttask');
 
 // Defined store route
 taskRoutes.route('/add').post(function (req, res) {
-    console.log("reached api layer router");
+  
   let task = new Task(req.body);
   task.save()
     .then(task => {
@@ -25,8 +26,8 @@ taskRoutes.route('/add').post(function (req, res) {
 
 // Defined get data(index or listing) route
 taskRoutes.route('/viewTasks').get(function (req, res) {
-    console.log("reached this point");
-    task.find(function (err, task){
+    console.log("reached tasks.route.js");
+    Task.find(function (err, task){
     if(err){
       console.log(err);
     }
@@ -37,20 +38,24 @@ taskRoutes.route('/viewTasks').get(function (req, res) {
 });
 
 // Defined edit route
-taskRoutes.route('/editTask/:id').get(function (req, res) {
+taskRoutes.route('/getTask/:id').get(function (req, res) {
   let id = req.params.id;
-  task.findById(id, function (err, task){
+  Task.findById(id, function (err, task){
       res.json(task);
   });
 });
 
 //  Defined update route
 taskRoutes.route('/update/:id').post(function (req, res) {
-    Task.findById(req.params.id, function(err, next, task) {
+    Task.findById(req.params.id, function(err, task) {
     if (!task)
-      return next(new Error('Could not load Document'));
+      return (new Error('Could not load Document'));
     else {
         task.task_name = req.body.task_name;
+        task.parent_task_name = req.body.parent_task_name;
+        task.start_date = req.body.start_date;
+        task.end_date= req.body.end_date;
+        task.priority= req.body.priority;
         // task.business_name = req.body.business_name;
         // task.business_gst_number = req.body.business_gst_number;
 
@@ -72,4 +77,24 @@ taskRoutes.route('/delete/:id').get(function (req, res) {
     });
 });
 
+
+
+
+
+
+
+//Get all categories
+taskRoutes.route('/getAllParents').get(function (req,res) {
+  //res.send('Get categories');
+  Task.find(function (err, task){
+    if(err){
+      console.log(err);
+    }
+    else {
+      res.json(task);
+    }
+}); 
+})
+
 module.exports = taskRoutes;
+

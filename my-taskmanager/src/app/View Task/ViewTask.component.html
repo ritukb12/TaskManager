@@ -5,27 +5,27 @@
                 <div class="form-group">
 
                     <label for="task" class="col-form-label">Task: </label>
-                    <input type="text" class="form-control" id="task" >
+                    <input type="text" class="form-control"  formControlName="task_name" #task_name >
 
                     <label for="parent" class="col-form-label">Parent Task: </label>
-                    <input type="text" class="form-control" id="parent">
+                    <input type="text" class="form-control" formControlName="parent_task_name" #parent_task_name >
                 </div>
 
                 <div class="form-group">
                     <label for="priorityfrom" class="col-form-label">Priority From: </label>
-                    <input type="text" class="form-control" id="priorityfrom">
+                    <input type="text" class="form-control"  formControlName="priorityfrom" #priorityfrom>
 
                     <label for="priorityto" class="col-form-label">Priority To: </label>
-                    <input type="text" class="form-control" id="priorityto">
+                    <input type="text" class="form-control"   formControlName="priorityto" #priorityto>
                 </div>
 
 
                 <div class="form-group">
                     <label for="startdate" class="col-form-label">Start Date: </label>
-                    <input type="date" class="form-control" id="startdate">
+                    <input type="date" class="form-control" formControlName="startdate" #startdate>
 
                     <label for="enddate" class="col-form-label">End Date: </label>
-                    <input type="date" class="form-control" id="enddate">
+                    <input type="date" class="form-control" formControlName="enddate" #enddate>
                 </div>
             </form>
         </div>
@@ -49,14 +49,14 @@
                         <tr *ngFor = "let task of tasks">
                             <td scope="col">{{task.task_name}}</td>
                             <td scope="col">{{task.parent_task_name}}</td>
-                            <td scope="col">{{task.task_priority}}</td>
+                            <td scope="col">{{task.priority}}</td>
                             <td scope="col">{{task.start_date}}</td>
                             <td scope="col">{{task.end_date}}</td>
                             <td scope="col">
-                                <a class="btn btn-primary" id="edit" routerLink="/UpdateTask">Edit</a> 
+                                <a class="btn btn-primary" id="edit" [routerLink]="['/editTask', task._id]">Edit</a> 
                             </td>
                             <td scope="col">
-                                <a class="btn btn-primary" id="delete">Delete</a>
+                                <a class="btn btn-primary" id="delete" (click) = "deleteTask(task._id)">Delete</a>
                             </td>
                         </tr>
                     </tbody>
