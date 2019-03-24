@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import Task from '../Task';
 import { TaskService } from '../task.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'view-task',
   templateUrl: './ViewTask.component.html',
@@ -11,7 +12,7 @@ export class ViewTask {
   tasks: Task[];
   title = 'View Task';
   angForm: FormGroup;
-  constructor(private ts: TaskService, private fb: FormBuilder) { this.createForm(); }
+  constructor(private ts: TaskService, private fb: FormBuilder, private route: ActivatedRoute,private router: Router) { this.createForm(); }
 
   createForm() {
      this.angForm = this.fb.group({
@@ -29,6 +30,11 @@ export class ViewTask {
   deleteTask(task_id) {
           this.ts.deleteTask(task_id).subscribe(res => {
             console.log('Deleted');
+            this.ts
+            .gettasks()
+            .subscribe((data: Task[]) => {
+              this.tasks = data;
+            });
           });
    }
   

@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class UpdateTask {
   title = 'Update Task';
   task: any = {};
+  allTasks: Task[];
   angForm: FormGroup;
   constructor(private ts: TaskService,private fb: FormBuilder,   private route: ActivatedRoute,private router: Router){this.createForm();}
 
@@ -29,6 +30,7 @@ export class UpdateTask {
   updateTask(task_name,parent_task_name,start_date,end_date, priority) {
     this.route.params.subscribe(params => {
        this.ts.updateTask(task_name,parent_task_name,start_date,end_date, priority, params['id']);
+       this.router.navigate(['/ViewTask']);
     });
   }
 
@@ -38,5 +40,13 @@ export class UpdateTask {
           this.task=res;
       });
     });
+
+
+      this.ts
+      .gettasks()
+      .subscribe((data: Task[]) => {
+        this.allTasks = data;
+      });
+    
   }
 }
