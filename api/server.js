@@ -4,7 +4,7 @@ bodyParser = require('body-parser'),
 cors = require('cors'),
 mongoose = require('mongoose');
 config = require('./DB');
-
+logger = require ('./logger')
 
 const taskRoute = require('./routes/task.routes');
 mongoose.Promise = global.Promise;
@@ -16,6 +16,7 @@ mongoose.connect(config.DB, { useNewUrlParser: true }).then(
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
+app.use(logger);
 app.use('/task', taskRoute);
 let port = process.env.PORT || 4000;
 

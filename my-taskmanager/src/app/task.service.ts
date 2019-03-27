@@ -10,7 +10,6 @@ export class TaskService {
   constructor(private http: HttpClient) { }
 
   addtask(task_name, parent_task_name, start_date, end_date, priority) {
-    console.log("Reached service addtask")
     const obj = {
       "task_name": task_name,
       "parent_task_name": parent_task_name,
@@ -19,10 +18,10 @@ export class TaskService {
       "priority": priority,
       "taskended": false
     };
-    console.log(obj);
+
     this.http.post(`${this.uri}/add`, obj)
       .subscribe(res =>
-        console.log('Task Added' + res)
+        {}
       );
   }
 
@@ -55,7 +54,7 @@ export class TaskService {
         this
           .http
           .post(`${this.uri}/endTask/${id}`, obj)
-          .subscribe(res => console.log('Done'));
+          .subscribe(res => {});
       }
     
 
@@ -71,7 +70,7 @@ export class TaskService {
     this
       .http
       .post(`${this.uri}/update/${id}`, obj)
-      .subscribe(res => console.log('Done'));
+      .subscribe(res => {});
   }
 
   

@@ -26,7 +26,6 @@ taskRoutes.route('/add').post(function (req, res) {
 
 // Defined get data(index or listing) route
 taskRoutes.route('/viewTasks').get(function (req, res) {
-  console.log("reached tasks.route.js");
   Task.find(function (err, task) {
     if (err) {
       console.log(err);

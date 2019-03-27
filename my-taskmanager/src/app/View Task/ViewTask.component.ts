@@ -36,7 +36,6 @@ export class ViewTask {
   deleteTask(task_id) {
     if (window.confirm("Are you sure you want to delete this Task?")) {
       this.ts.deleteTask(task_id).subscribe(res => {
-        console.log('Deleted');
         this.ts
           .gettasks()
           .subscribe((data: Task[]) => {
