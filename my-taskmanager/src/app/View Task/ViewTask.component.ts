@@ -11,48 +11,52 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ViewTask {
   tasks: Task[];
   title = 'View Task';
-  task_name='';
-  parent_task_name= '';
-  priorityFrom ='';
-  priorityTo='';
+  task_name = '';
+  parent_task_name = '';
+  priorityFrom = '';
+  priorityTo = '';
   startDate: Date;
-  endDate:Date;
+  endDate: Date;
   angForm: FormGroup;
-  constructor(private ts: TaskService, private fb: FormBuilder, private route: ActivatedRoute,private router: Router) { this.createForm(); }
+  constructor(private ts: TaskService, private fb: FormBuilder, private route: ActivatedRoute, private router: Router) { this.createForm(); }
 
   createForm() {
-     this.angForm = this.fb.group({
+    this.angForm = this.fb.group({
       task_name: [''],
       parent_task_name: [''],
       priorityfrom: [''],
-      priorityto: [''],     
-      startdate: ['' ],
-      enddate: ['']   
-  
-     });
+      priorityto: [''],
+      startdate: [''],
+      enddate: ['']
+
+    });
   }
 
-  
-  deleteTask(task_id) {
-          this.ts.deleteTask(task_id).subscribe(res => {
-            console.log('Deleted');
-            this.ts
-            .gettasks()
-            .subscribe((data: Task[]) => {
-              this.tasks = data;
-            });
-          });
-   }
 
-   endTask(task_id) {
+  deleteTask(task_id) {
+    if (window.confirm("Are you sure you want to delete this Task?")) {
+      this.ts.deleteTask(task_id).subscribe(res => {
+        console.log('Deleted');
+        this.ts
+          .gettasks()
+          .subscribe((data: Task[]) => {
+            this.tasks = data;           
+          });
+          window.confirm("Task Deleted Successfully!!")
+      });
+    }
+  }
+
+  endTask(task_id) {
     this.ts.endTask(task_id);
     this.ts
-    .gettasks()
-    .subscribe((data: Task[]) => {
-      this.tasks = data;
-    });
-}
-  
+      .gettasks()
+      .subscribe((data: Task[]) => {
+        this.tasks = data;
+        window.confirm("Task Ended Sucessfully!!");
+      });
+  }
+
   ngOnInit() {
     this.ts
       .gettasks()

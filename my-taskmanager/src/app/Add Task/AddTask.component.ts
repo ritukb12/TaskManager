@@ -28,6 +28,7 @@ createForm() {
   addtask(task_name,parent_task_name,start_date,end_date, priority) {
     console.log("Reached component.ts addtask");
     this.ts.addtask(task_name,parent_task_name,start_date,end_date, priority);
+    window.confirm("Task Added Sucessfully!!");
   }
 
   
