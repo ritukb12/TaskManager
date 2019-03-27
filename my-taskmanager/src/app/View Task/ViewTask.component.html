@@ -5,27 +5,27 @@
                 <div class="form-group">
 
                     <label for="task" class="col-form-label">Task: </label>
-                    <input type="text" class="form-control"  formControlName="task_name" #task_name >
+                    <input type="text" class="form-control"  formControlName="task_name" [(ngModel)] ="task_name" >
 
                     <label for="parent" class="col-form-label">Parent Task: </label>
-                    <input type="text" class="form-control" formControlName="parent_task_name" #parent_task_name >
+                    <input type="text" class="form-control" formControlName="parent_task_name"  [(ngModel)] ="parent_task_name" >
                 </div>
 
                 <div class="form-group">
                     <label for="priorityfrom" class="col-form-label">Priority From: </label>
-                    <input type="text" class="form-control"  formControlName="priorityfrom" #priorityfrom>
+                    <input type="text" class="form-control"  formControlName="priorityfrom" [(ngModel)] ="priorityFrom">
 
                     <label for="priorityto" class="col-form-label">Priority To: </label>
-                    <input type="text" class="form-control"   formControlName="priorityto" #priorityto>
+                    <input type="text" class="form-control"   formControlName="priorityto"  [(ngModel)] ="priorityTo">
                 </div>
 
 
                 <div class="form-group">
                     <label for="startdate" class="col-form-label">Start Date: </label>
-                    <input type="date" class="form-control" formControlName="startdate" #startdate>
+                    <input type="date" class="form-control" formControlName="startdate"  [(ngModel)] ="startDate">
 
                     <label for="enddate" class="col-form-label">End Date: </label>
-                    <input type="date" class="form-control" formControlName="enddate" #enddate>
+                    <input type="date" class="form-control" formControlName="enddate"  [(ngModel)] ="endDate">
                 </div>
             </form>
         </div>
@@ -43,10 +43,11 @@
                             <th scope="col">End</th>
                             <th scope="col">Edit</th>
                             <th scope="col">End Task</th>
+                            <th scope="col">Delete Task</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor = "let task of tasks">
+                        <tr *ngFor = "let task of tasks | SearchTask : task_name : parent_task_name : priorityFrom : priorityTo: startDate: endDate">
                             <td scope="col">{{task.task_name}}</td>
                             <td scope="col">{{task.parent_task_name}}</td>
                             <td scope="col">{{task.priority}}</td>
@@ -54,6 +55,9 @@
                             <td scope="col">{{task.end_date}}</td>
                             <td scope="col">
                                 <a class="btn btn-primary" id="edit" [routerLink]="['/editTask', task._id]">Edit</a> 
+                            </td>
+                            <td scope="col">
+                                <a class="btn btn-primary" id="end" (click) = "endTask(task._id)">End</a>
                             </td>
                             <td scope="col">
                                 <a class="btn btn-primary" id="delete" (click) = "deleteTask(task._id)">Delete</a>

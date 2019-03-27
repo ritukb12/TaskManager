@@ -9,13 +9,16 @@ import {UpdateTask} from  './Update Task/UpdateTask.component'
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TaskService } from './task.service';
+import {SearchTask } from './SearchTask.pipe';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddTask,
     ViewTask,
-    UpdateTask
+    UpdateTask,
+    SearchTask
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,7 @@ import { TaskService } from './task.service';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [TaskService],
+  providers: [TaskService, DatePipe ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

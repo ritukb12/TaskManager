@@ -30,7 +30,6 @@ export class UpdateTask {
   updateTask(task_name,parent_task_name,start_date,end_date, priority) {
     this.route.params.subscribe(params => {
        this.ts.updateTask(task_name,parent_task_name,start_date,end_date, priority, params['id']);
-       this.router.navigate(['/ViewTask']);
     });
   }
 

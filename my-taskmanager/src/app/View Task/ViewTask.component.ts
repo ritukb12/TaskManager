@@ -11,6 +11,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ViewTask {
   tasks: Task[];
   title = 'View Task';
+  task_name='';
+  parent_task_name= '';
+  priorityFrom ='';
+  priorityTo='';
+  startDate: Date;
+  endDate:Date;
   angForm: FormGroup;
   constructor(private ts: TaskService, private fb: FormBuilder, private route: ActivatedRoute,private router: Router) { this.createForm(); }
 
