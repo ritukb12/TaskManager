@@ -9,7 +9,9 @@ let Task = new Schema({
     parent_task_name: {type :String },
     start_date: {type :String },
     end_date: {type :String },
-    priority: {type :String }
+    priority: {type :String },
+    taskended: {type : Boolean }
+    
 },{
     collection: 'task'
 });

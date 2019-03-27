@@ -32,7 +32,6 @@
         <hr/>
         <div class="row">
             <div class="tabular-content alt-content">
-
                 <table class="table table-striped alt-table">
                     <thead>
                         <tr>
@@ -54,10 +53,10 @@
                             <td scope="col">{{task.start_date}}</td>
                             <td scope="col">{{task.end_date}}</td>
                             <td scope="col">
-                                <a class="btn btn-primary" id="edit" [routerLink]="['/editTask', task._id]">Edit</a> 
+                                <a class="btn btn-primary" id="edit" [routerLink]="['/editTask', task._id]" [class.disabled]="task.taskended">Edit</a> 
                             </td>
-                            <td scope="col">
-                                <a class="btn btn-primary" id="end" (click) = "endTask(task._id)">End</a>
+                            <td  scope="col">
+                                <a  class="btn btn-primary" id="end" (click) = "endTask(task._id)" [class.disabled]="task.taskended" >End</a>
                             </td>
                             <td scope="col">
                                 <a class="btn btn-primary" id="delete" (click) = "deleteTask(task._id)">Delete</a>

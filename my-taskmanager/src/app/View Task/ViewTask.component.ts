@@ -43,6 +43,15 @@ export class ViewTask {
             });
           });
    }
+
+   endTask(task_id) {
+    this.ts.endTask(task_id);
+    this.ts
+    .gettasks()
+    .subscribe((data: Task[]) => {
+      this.tasks = data;
+    });
+}
   
   ngOnInit() {
     this.ts
