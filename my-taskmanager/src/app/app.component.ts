@@ -13,24 +13,9 @@ import { NavigationCancel,
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Task  Manager';
-  constructor(private _loadingBar: SlimLoadingBarService, private _router: Router) {
-    this._router.events.subscribe((event: Event) => {
-      this.navigationInterceptor(event);
-    });
+  title = 'my-taskmanager';
+  constructor( private _router: Router) {
+    
   }
-  private navigationInterceptor(event: Event): void {
-    if (event instanceof NavigationStart) {
-      this._loadingBar.start();
-    }
-    if (event instanceof NavigationEnd) {
-      this._loadingBar.complete();
-    }
-    if (event instanceof NavigationCancel) {
-      this._loadingBar.stop();
-    }
-    if (event instanceof NavigationError) {
-      this._loadingBar.stop();
-    }
-  }
+ 
 }

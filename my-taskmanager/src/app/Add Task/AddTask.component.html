@@ -3,34 +3,34 @@
         <form [formGroup]="angForm">
 
             <div class="form-group">
-                <label for="task">Task</label>
+                <label for="task"  i18n="@@temp_task_name">Task</label>
                 <input type="text" class="form-control" formControlName="task_name" required #task_name>
             </div>
             <div class="form-group">
-                <label for="priority">Priority</label>
+                <label for="priority"  i18n="@@temp_priority">Priority</label>
                 <div class="slidecontainer">
                     <input type="range" min="0" max="100" value="30" class="slider form-control" #priority formControlName="priority">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="parenttask">Select Parent Task</label>
+                <label for="parenttask"  i18n="@@temp_parent_task_name">Select Parent Task</label>
                 <select class="form-control" formControlName="parent_task_name" #parent_task_name>
                     <option   [value]="selectUndefinedOptionValue">-- select --</option>
                     <option *ngFor="let task of tasks">{{task.task_name}}</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="startdate">Start Date </label>
+                <label for="startdate"  i18n="@@temp_start_date">Start Date </label>
                 <input type="date" class="form-control" formControlName="start_date" #start_date required>
             </div>
             <div class="form-group">
-                <label for="enddate">End Date</label>
+                <label for="enddate" i18n="@@temp_end_date">End Date</label>
                 <input type="date" class="form-control" formControlName="end_date" #end_date required>
             </div>
 
-            <input class="btn btn-primary" type="submit" value="Add Task" (click)="addtask(task_name.value,parent_task_name.value,start_date.value,end_date.value, priority.value)"> &nbsp;
-            <input class="btn btn-primary" type="reset" value="Reset">
+            <input class="btn btn-primary" i18n="@@temp_Add_task" type="submit" value="Add Task" (click)="addtask(task_name.value,parent_task_name.value,start_date.value,end_date.value, priority.value)"> &nbsp;
+            <input class="btn btn-primary"  i18n="@@temp_Reset" type="reset" value="Reset">
         </form>
 
     </div>

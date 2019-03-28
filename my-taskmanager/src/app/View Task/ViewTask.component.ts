@@ -3,6 +3,8 @@ import Task from '../Task';
 import { TaskService } from '../task.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import {SearchTask} from '../searchTask.pipe'
+
 @Component({
   selector: 'view-task',
   templateUrl: './ViewTask.component.html',

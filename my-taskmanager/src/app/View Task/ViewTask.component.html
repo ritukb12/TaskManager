@@ -4,27 +4,27 @@
             <form [formGroup]="angForm">
                 <div class="form-group">
 
-                    <label for="task" class="col-form-label">Task: </label>
+                    <label for="task" class="col-form-label" i18n="@@temp_task_name_view">Task: </label>
                     <input type="text" class="form-control"  formControlName="task_name" [(ngModel)] ="task_name" >
 
-                    <label for="parent" class="col-form-label">Parent Task: </label>
+                    <label for="parent" class="col-form-label" i18n="@@temp_parent_task_name_view">Parent Task: </label>
                     <input type="text" class="form-control" formControlName="parent_task_name"  [(ngModel)] ="parent_task_name" >
                 </div>
 
                 <div class="form-group">
-                    <label for="priorityfrom" class="col-form-label">Priority From: </label>
+                    <label for="priorityfrom" class="col-form-label"  i18n="@@temp_priorityfrom_view">Priority From: </label>
                     <input type="text" class="form-control"  formControlName="priorityfrom" [(ngModel)] ="priorityFrom">
 
-                    <label for="priorityto" class="col-form-label">Priority To: </label>
+                    <label for="priorityto" class="col-form-label" i18n="@@temp_priorityto_view">Priority To: </label>
                     <input type="text" class="form-control"   formControlName="priorityto"  [(ngModel)] ="priorityTo">
                 </div>
 
 
                 <div class="form-group">
-                    <label for="startdate" class="col-form-label">Start Date: </label>
+                    <label for="startdate" class="col-form-label"  i18n="@@temp_start_date_view">Start Date: </label>
                     <input type="date" class="form-control" formControlName="startdate"  [(ngModel)] ="startDate">
 
-                    <label for="enddate" class="col-form-label">End Date: </label>
+                    <label for="enddate" class="col-form-label" i18n="@@temp_end_date_view">End Date: </label>
                     <input type="date" class="form-control" formControlName="enddate"  [(ngModel)] ="endDate">
                 </div>
             </form>
@@ -35,14 +35,14 @@
                 <table class="table table-striped alt-table">
                     <thead>
                         <tr>
-                            <th scope="col">Task</th>
-                            <th scope="col">Parent</th>
-                            <th scope="col">Priority</th>
-                            <th scope="col">Start</th>
-                            <th scope="col">End</th>
-                            <th scope="col">Edit</th>
-                            <th scope="col">End Task</th>
-                            <th scope="col">Delete Task</th>
+                            <th scope="col" i18n="@@taskname_view">Task</th>
+                            <th scope="col" i18n="@@taskpname_view">Parent</th>
+                            <th scope="col" i18n="@@taskpriority_view">Priority</th>
+                            <th scope="col" i18n="@@tasksdate_view">Start</th>
+                            <th scope="col" i18n="@@taskedate_view">End</th>
+                            <th scope="col" i18n="@@taskedit_view">Edit</th>
+                            <th scope="col" i18n="@@taskend_view">End Task</th>
+                            <th scope="col" i18n="@@taskdel_view">Delete Task</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -53,13 +53,13 @@
                             <td scope="col">{{task.start_date}}</td>
                             <td scope="col">{{task.end_date}}</td>
                             <td scope="col">
-                                <a class="btn btn-primary" id="edit" [routerLink]="['/editTask', task._id]" [class.disabled]="task.taskended">Edit</a> 
+                                <a class="btn btn-primary" i18n="@@taskeditbtn_view" id="edit" [routerLink]="['/editTask', task._id]" [class.disabled]="task.taskended">Edit</a> 
                             </td>
                             <td  scope="col">
-                                <a  class="btn btn-primary" id="end" (click) = "endTask(task._id)" [class.disabled]="task.taskended" >End</a>
+                                <a  class="btn btn-primary" i18n="@@taskendbtn_view" id="end" (click) = "endTask(task._id)" [class.disabled]="task.taskended" >End</a>
                             </td>
                             <td scope="col">
-                                <a class="btn btn-primary" id="delete" (click) = "deleteTask(task._id)">Delete</a>
+                                <a class="btn btn-primary" i18n="@@taskdelbtn_view" id="delete" (click) = "deleteTask(task._id)">Delete</a>
                             </td>
                         </tr>
                     </tbody>
