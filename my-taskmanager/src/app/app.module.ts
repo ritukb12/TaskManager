@@ -16,11 +16,10 @@ import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
-    SearchTask,
     AddTask,
     ViewTask,
     UpdateTask,
-
+    SearchTask,
   ],
   imports: [
 
