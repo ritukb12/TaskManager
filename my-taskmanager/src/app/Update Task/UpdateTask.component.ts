@@ -12,11 +12,11 @@ export class UpdateTask {
   title = 'Update Task';
   task: any = {};
   allTasks: Task[];
-  angForm: FormGroup;
+  angForm1: FormGroup;
   constructor(private ts: TaskService,private fb: FormBuilder,   private route: ActivatedRoute,private router: Router){this.createForm();}
 
   createForm() {
-    this.angForm = this.fb.group({
+    this.angForm1 = this.fb.group({
       task_name: ['', Validators.required ],
       priority: ['', Validators.required ],
       parent_task_name: [''],

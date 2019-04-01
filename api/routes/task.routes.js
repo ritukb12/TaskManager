@@ -10,14 +10,13 @@ let Task = require('../models/task');
 
 // Defined store route
 taskRoutes.route('/add').post(function (req, res) {
-
   let task = new Task(req.body);
   task.save()
     .then(task => {
       res.status(200).json({ 'task': 'task added successfully' });
     })
     .catch(err => {
-      res.status(400).send("unable to save to database");
+      res.status(400).send("unable to save to database" + err);
     });
 });
 
@@ -40,7 +39,15 @@ taskRoutes.route('/viewTasks').get(function (req, res) {
 taskRoutes.route('/getTask/:id').get(function (req, res) {
   let id = req.params.id;
   Task.findById(id, function (err, task) {
-    res.json(task);
+    if (err) {
+      console.log("Error:", err);
+      res.json({ success: false });
+    }
+    else {
+      res.json(task);
+    }
+
+
   });
 });
 
@@ -48,7 +55,7 @@ taskRoutes.route('/getTask/:id').get(function (req, res) {
 taskRoutes.route('/update/:id').post(function (req, res) {
   Task.findById(req.params.id, function (err, task) {
     if (!task)
-      return (new Error('Could not load Document'));
+      res.status(200).json({ "Message": "Could not find Task to update" });
     else {
       task.task_name = req.body.task_name;
       task.parent_task_name = req.body.parent_task_name;
@@ -60,10 +67,10 @@ taskRoutes.route('/update/:id').post(function (req, res) {
 
       task.save()
         .then(task => {
-          res.json('Update complete');
+          res.json({ "Message": "Update completed successfully"});
         })
         .catch(err => {
-          res.status(400).send("unable to update the database");
+          res.status(400).send({ "Message": "Update unsuccessful"});
         });
     }
   });
@@ -74,14 +81,14 @@ taskRoutes.route('/update/:id').post(function (req, res) {
 taskRoutes.route('/endTask/:id').post(function (req, res) {
   Task.findById(req.params.id, function (err, task) {
     if (!task)
-      return (new Error('Could not load Document'));
+      res.status(200).json({ "Message": "Could not find Task to end" });
     else {
 
       task.taskended = req.body.taskended;
 
       task.save()
         .then(task => {
-          res.json('Update complete');
+          res.json({ "Message": "Update unsuccessful"});
         })
         .catch(err => {
           res.status(400).send("unable to update the database");
@@ -93,8 +100,11 @@ taskRoutes.route('/endTask/:id').post(function (req, res) {
 // Defined delete | remove | destroy route
 taskRoutes.route('/delete/:id').get(function (req, res) {
   Task.findByIdAndRemove({ _id: req.params.id }, function (err, task) {
-    if (err) res.json(err);
-    else res.json('Successfully removed');
+    if (err) {
+      console.log("Error:", err);
+      res.json({ success: false });
+    }
+    else res.json({ "Message": "Successfully removed" });
   });
 });
 
