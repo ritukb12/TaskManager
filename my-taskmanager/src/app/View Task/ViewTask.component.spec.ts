@@ -50,9 +50,9 @@ describe('View Task Component', () => {
         fixture.detectChanges();
     });
 
-    // it('should create component', () => {
-    //     expect(component.angForm).toBeDefined();
-    // });
+    it('should create component', () => {
+        expect(component).toBeDefined();
+    });
 
 
 });

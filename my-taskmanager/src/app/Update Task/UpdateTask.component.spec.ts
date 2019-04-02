@@ -5,13 +5,13 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
-//import { AppRoutingModule } from '../app-routing.module';
+import { AppRoutingModule } from '../app-routing.module';
 import { ViewTask } from '../View Task/ViewTask.component'
 import { AddTask } from '../Add Task/AddTask.component'
 import { UpdateTask } from './UpdateTask.component'
 import { SearchTask } from '../searchTask.pipe'
 import { RouterTestingModule } from '@angular/router/testing';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+
 describe('Update Task Component', () => {
     let component: UpdateTask;
     let fixture: ComponentFixture<UpdateTask>;
@@ -26,9 +26,9 @@ describe('Update Task Component', () => {
                 FormsModule,
                 ReactiveFormsModule,
                 HttpClientModule,
-                //AppRoutingModule,
+                AppRoutingModule,
                 RouterTestingModule
-            ], schemas: [NO_ERRORS_SCHEMA],
+            ], 
             providers: [
                 {
                     provide: Router, ActivatedRoute,
@@ -46,9 +46,9 @@ describe('Update Task Component', () => {
         fixture.detectChanges();
     });
 
-    // it('should create component', () => {
-    //     expect(component.angForm1).toBeDefined();
-    // });
+    it('should create component', () => {
+        expect(component).toBeDefined();
+    });
 
     // it('form should be invalid', async(() => {
     //     component.angForm1.controls['task_name'].setValue('');
