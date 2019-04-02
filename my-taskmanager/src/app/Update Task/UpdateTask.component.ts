@@ -15,26 +15,31 @@ export class UpdateTask {
   angForm1: FormGroup;
   constructor(private ts: TaskService,private fb: FormBuilder,   private route: ActivatedRoute,private router: Router){this.createForm();}
 
+  //Funtion to create the Form
   createForm() {
     this.angForm1 = this.fb.group({
       task_name: ['', Validators.required ],
       priority: ['', Validators.required ],
       parent_task_name: [''],
       start_date: ['', Validators.required ],
-      end_date: ['', Validators.required ]
-      
-  
+      end_date: ['', Validators.required ] 
     });
   }
 
+  //Function to update Task
   updateTask(task_name,parent_task_name,start_date,end_date, priority) {
     this.route.params.subscribe(params => {
-       this.ts.updateTask(task_name,parent_task_name,start_date,end_date, priority, params['id']);
+       this.ts.updateTask(task_name,parent_task_name,start_date,end_date, priority, params['id']).subscribe(
+        res => {
+        if(res)
+          window.confirm(res.Message)
+        });
 
-       window.confirm("Updated Sucessfully!!")
+       
     });
   }
 
+  //Load task to be edited on init
   ngOnInit() {
     this.route.params.subscribe(params => {
         this.ts.editTask(params['id']).subscribe(res => {
@@ -42,7 +47,7 @@ export class UpdateTask {
       });
     });
 
-
+    //Get All tasks to load in the Parent Task drop down
       this.ts
       .gettasks()
       .subscribe((data: Task[]) => {

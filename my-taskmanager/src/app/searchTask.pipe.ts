@@ -1,6 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { DatePipe } from '@angular/common';
 
+
+//Pipe to filter tasks based on various fields
 @Pipe({
   name: 'SearchTask'
 })

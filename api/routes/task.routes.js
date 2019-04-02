@@ -13,10 +13,10 @@ taskRoutes.route('/add').post(function (req, res) {
   let task = new Task(req.body);
   task.save()
     .then(task => {
-      res.status(200).json({ 'task': 'task added successfully' });
+      res.status(200).json({ 'Message': 'Task added successfully' });
     })
     .catch(err => {
-      res.status(400).send("unable to save to database" + err);
+      res.status(400).send({'Message': "Unable to save to database" + err});
     });
 });
 
@@ -40,7 +40,7 @@ taskRoutes.route('/getTask/:id').get(function (req, res) {
   let id = req.params.id;
   Task.findById(id, function (err, task) {
     if (err) {
-      console.log("Error:", err);
+      
       res.json({ success: false });
     }
     else {

@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {Observable, of} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 
+//Service class to perform CRUD operations on Tasks
 export class TaskService {
   uri = 'http://localhost:4000/task';
   constructor(private http: HttpClient) { }
 
-  addtask(task_name, parent_task_name, start_date, end_date, priority) {
+  //Function  to Add a task
+  addtask(task_name, parent_task_name, start_date, end_date, priority): Observable<any> {
     const obj = {
       "task_name": task_name,
       "parent_task_name": parent_task_name,
@@ -19,46 +22,45 @@ export class TaskService {
       "taskended": false
     };
 
-    this.http.post(`${this.uri}/add`, obj)
-      .subscribe(res =>
-        {}
-      );
+    return this.http.post(`${this.uri}/add`, obj);
+     
   }
 
-
-
-
-  gettasks() {
+//Function  to get all tasks
+  gettasks(): Observable<any>  {
     return this
       .http
       .get(`${this.uri}/viewTasks`);
   }
 
-  editTask(id) {
+  //Function to edit a task
+  editTask(id): Observable<any>  {
     return this
       .http
       .get(`${this.uri}/getTask/${id}`);
   }
 
-  deleteTask(id) {
+  //Function to delete a task
+  deleteTask(id): Observable<any>  {
     return this
       .http
       .get(`${this.uri}/delete/${id}`);
   }
 
-  endTask(id) {
+  //Function to End a task
+  endTask(id): Observable<any>  {
     
         const obj = {
           "taskended": true
         };
-        this
+        return this
           .http
-          .post(`${this.uri}/endTask/${id}`, obj)
-          .subscribe(res => {});
+          .post(`${this.uri}/endTask/${id}`, obj);
       }
     
 
-  updateTask(task_name, parent_task_name, start_date, end_date, priority, id) {
+  //Function to update a task
+  updateTask(task_name, parent_task_name, start_date, end_date, priority, id): Observable<any>  {
 
     const obj = {
       "task_name": task_name,
@@ -67,10 +69,9 @@ export class TaskService {
       "end_date": end_date,
       "priority": priority
     };
-    this
+    return this
       .http
-      .post(`${this.uri}/update/${id}`, obj)
-      .subscribe(res => {});
+      .post(`${this.uri}/update/${id}`, obj);
   }
 
   

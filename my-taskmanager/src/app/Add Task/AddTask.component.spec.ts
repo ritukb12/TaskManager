@@ -41,7 +41,7 @@ describe('Add Task Component', () => {
   });
 
    it('should create component', () => {
-    expect(component.angForm).toBeDefined();
+    expect(component).toBeDefined();
   });
 
   it('form should be invalid', async(() => {

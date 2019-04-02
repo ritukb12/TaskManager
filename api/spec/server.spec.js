@@ -67,7 +67,7 @@ describe("TaskManager Server", function () {
         })
         .expect(function (res) {
           expect(res.statusCode).toBe(200);
-          expect(req.body).toEqual({ "task": "task added successfully" });
+          expect(req.body).toEqual({ "Message": "task added successfully" });
         })
         .end(function (err) {
           expect(err).toBeDefined();

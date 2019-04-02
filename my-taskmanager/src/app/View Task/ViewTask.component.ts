@@ -22,6 +22,7 @@ export class ViewTask {
   angForm: FormGroup;
   constructor(private ts: TaskService, private fb: FormBuilder, private route: ActivatedRoute, private router: Router) { this.createForm(); }
 
+  //Function to create the form
   createForm() {
     this.angForm = this.fb.group({
       task_name: [''],
@@ -35,6 +36,7 @@ export class ViewTask {
   }
 
 
+  //Function to delete task
   deleteTask(task_id) {
     if (window.confirm("Are you sure you want to delete this Task?")) {
       this.ts.deleteTask(task_id).subscribe(res => {
@@ -48,6 +50,7 @@ export class ViewTask {
     }
   }
 
+  //Function to end task
   endTask(task_id) {
     this.ts.endTask(task_id);
     this.ts
@@ -58,6 +61,7 @@ export class ViewTask {
       });
   }
 
+  //Get all tasks on  init
   ngOnInit() {
     this.ts
       .gettasks()

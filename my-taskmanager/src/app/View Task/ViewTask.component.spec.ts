@@ -27,10 +27,10 @@ describe('View Task Component', () => {
                 ReactiveFormsModule,
                 HttpClientModule,
                 RouterTestingModule.withRoutes([
-                    {path:"AddTask", component:AddTask},
-                  {path:"ViewTask", component:ViewTask},
-                  {path:"editTask/:id", component:UpdateTask},
-                  { path: '', redirectTo: '/', pathMatch: 'full'}]),
+                    { path: "AddTask", component: AddTask },
+                    { path: "ViewTask", component: ViewTask },
+                    { path: "editTask/:id", component: UpdateTask },
+                    { path: '', redirectTo: '/', pathMatch: 'full' }]),
                 AppRoutingModule
             ],
             providers: [
