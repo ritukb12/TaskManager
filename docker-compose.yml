@@ -1,0 +1,22 @@
+version: "3.3"
+services:
+  angular:
+  container_name: angular-taskmanager
+    build: ./my-taskmanager
+    ports:
+      - "4200:4200"
+  
+  app:
+    container_name: node-taskmanager
+    build: ./api
+    ports:
+      - "3000:3000"
+    links:
+      - mongo
+
+  mongo:
+    container_name: mongo-taskmanager
+    image: mongo
+    ports:
+      - "27017:27017"
+
