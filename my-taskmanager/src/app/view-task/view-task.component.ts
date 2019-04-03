@@ -3,7 +3,7 @@ import Task from '../Task';
 import { TaskService } from '../task.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SearchTask } from '../searchTask.pipe'
+import { SearchTaskPipe } from '../search-task.pipe'
 
 @Component({
   selector: 'app-view-task',
@@ -53,13 +53,14 @@ export class ViewTaskComponent implements OnInit {
 
   //Function to end task
   endTask(task_id) {
-    this.ts.endTask(task_id);
+    this.ts.endTask(task_id).subscribe(res => {;
     this.ts
       .gettasks()
       .subscribe((data: Task[]) => {
         this.tasks = data;
         window.confirm("Task Ended Sucessfully!!");
-      });
+      })
+    });
   }
 
   //Get all tasks on  init
@@ -71,6 +72,7 @@ export class ViewTaskComponent implements OnInit {
       });
   }
 
+  //Mock test function to check HTTP response
   mockTest() {
     this.ts.getMockTasks().subscribe(data => 
       { 

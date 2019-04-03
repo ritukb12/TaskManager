@@ -31,6 +31,9 @@
                 <label for="enddate" i18n="@@temp_end_date_update">End Date</label>
                 <input type="date" class="form-control" [(ngModel)]="task.end_date" formControlName="end_date" #end_date required (blur)="compareTwoDates()">
             </div>
+            <div *ngIf="error.isError" class="alert alert-danger">
+                {{ error.errorMessage }}
+            </div>
             <input class="btn btn-primary" type="submit" i18n="@@temp_Update_task" value="Update Task" [disabled]="error.isError || angForm1.invalid" (click)="updateTask(task_name.value,parent_task_name.value,start_date.value,end_date.value, priority.value)"> &nbsp;
             <input class="btn btn-primary" i18n="@@temp_Reset_update" type="reset" value="Reset" (click)="reset()">
         </form>

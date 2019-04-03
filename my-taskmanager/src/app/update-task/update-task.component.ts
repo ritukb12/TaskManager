@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./update-task.component.css']
 })
 export class UpdateTaskComponent implements OnInit {
+  selectUndefinedOptionValue:any;
   title = 'Update Task';
   task: any = {};
   allTasks: Task[];
@@ -51,6 +52,13 @@ export class UpdateTaskComponent implements OnInit {
 
 
     });
+  }
+
+  compareTwoDates() {
+    if (new Date(this.angForm1.controls['end_date'].value) < new Date(this.angForm1.controls['start_date'].value)) {
+      this.error = { isError: true, errorMessage: "End Date can't before start date" };
+    }
+    else { this.error = { isError: false, errorMessage: "" }; }
   }
 
   //Load task to be edited on init

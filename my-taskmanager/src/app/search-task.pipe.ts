@@ -1,12 +1,10 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { DatePipe } from '@angular/common';
 
-
-//Pipe to filter tasks based on various fields
 @Pipe({
   name: 'SearchTask'
 })
-export class SearchTask implements PipeTransform {
+export class SearchTaskPipe implements PipeTransform {
 
   rtitems: Array<any>;
   start_date: any;

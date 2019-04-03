@@ -1,7 +1,7 @@
 import { async, fakeAsync,ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewTaskComponent } from './view-task.component';
-import { SearchTask } from '../searchTask.pipe'
+import { SearchTaskPipe } from '../search-task.pipe'
 import { RouterTestingModule } from '@angular/router/testing';
 import {HttpClientModule} from "@angular/common/http";
 import { DatePipe } from '@angular/common';
@@ -9,7 +9,7 @@ import { TaskService } from '../task.service';
 import { Observable } from 'rxjs/Rx';
 import Task from '../Task';
 import {mockTasks} from '../Tasks.mock'
-
+import { of } from 'rxjs'
 
 describe('ViewTaskComponent', () => {
   let component: ViewTaskComponent;
@@ -17,7 +17,7 @@ describe('ViewTaskComponent', () => {
 let tasks :  Task[];
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ViewTaskComponent,SearchTask],
+      declarations: [ViewTaskComponent,SearchTaskPipe],
       imports: [FormsModule, ReactiveFormsModule,RouterTestingModule,HttpClientModule],
       providers:[DatePipe]
     })
@@ -40,7 +40,7 @@ let tasks :  Task[];
 
   it('should fetch all data from service in async manner', fakeAsync(() => {  
     let taskService: TaskService = fixture.debugElement.injector.get(TaskService);
-    const spy = spyOn(taskService, 'getMockTasks').and.returnValue(Observable.of(mockTasks));
+    const spy = spyOn(taskService, 'getMockTasks').and.returnValue(of(mockTasks));
     
     component.mockTest();
     fixture.detectChanges();

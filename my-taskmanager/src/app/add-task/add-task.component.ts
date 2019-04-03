@@ -10,6 +10,7 @@ import Task from '../Task';
   styleUrls: ['./add-task.component.css']
 })
 export class AddTaskComponent implements OnInit {
+  selectUndefinedOptionValue:any;
   tasks: Task[];
   angForm: FormGroup;
   title = 'Add Task';
