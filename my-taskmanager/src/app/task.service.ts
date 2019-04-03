@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Observable, of} from 'rxjs';
-
+import {mockTasks} from './Tasks.mock'
 @Injectable({
   providedIn: 'root'
 })
@@ -76,7 +76,10 @@ export class TaskService {
 
   
 
-
+//Mock Function  to get all tasks
+getMockTasks(): Observable<any>  {
+  return Observable.of(mockTasks);
+}
 
 
 }
